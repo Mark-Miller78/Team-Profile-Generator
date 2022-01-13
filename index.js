@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
-const fs = require('fs');
 const pageTemplate = require('./src/page-template');
+const{writeFile} = require('./utils/generate-HTML');
 const mock = require('./src/mock-data');
 
 const Manager = require('./lib/Manager');
@@ -169,29 +169,12 @@ const promptUser=(employeeData)=>{
 }
 
 promptUser()
-
-
-
-
-// testFunc=(employeeData)=>{
-//     let {name, ID, email, employeeType, managerInput, engineerInput, internInput} = employeeData;
-//     let employee;
-
-//         for(i=0; i<employeeData.length; i++){
-            
-//             if(employeeType === 'Manager'){
-//                 employee = new Manager(name, ID, email, managerInput);
-//             } else if (employeeType === 'Engineer'){
-//                 employee = new Engineer(name, ID, email, engineerInput);
-//             } else{
-//                 employee = new Intern(name, ID, email, internInput);
-//             }
-
-//             teamArray.push(employee);
-//         };
-
-//     console.log(teamArray);
-// }
-
-// testFunc(mock);
-    
+    .then(team=>{
+        return pageTemplate(team);
+    })
+    .then(pageHTML =>{
+        return writeFile(pageHTML)
+    })
+    .catch(err =>{
+        console.log(err)
+    })

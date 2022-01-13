@@ -1,54 +1,54 @@
 managerCard=(manager)=>{
     return `
-    <div class="cell">
-        <div class="card">
-            <div class="card-divider">
-                <h2>${manager.Name}</h2>
-                <i class="fas fa-clipboard-list"></i><h3>${manager.getRole()}</h3>
-            </div>
-            <div class="card-section>
-                <p>${manager.getId()}</p>
-                <p>${manager.getEmail()}</p>
-                <p>${manager.getOfficeNumber()}</p>
-            </div>
-        </div>
-    </div>
+                    <div class="cell">
+                        <div class="card">
+                            <div class="card-divider">
+                                <h2>${manager.Name}</h2>
+                                <i class="fas fa-clipboard-list"></i><h3>${manager.getRole()}</h3>
+                            </div>
+                            <div class="card-section">
+                                <p>${manager.getId()}</p>
+                                <p>${manager.getEmail()}</p>
+                                <p>${manager.getOfficeNumber()}</p>
+                            </div>
+                        </div>
+                    </div>
     `
 }
 
 engineerCard=(engineer)=>{
     return `
-    <div class="cell">
-        <div class="card">
-            <div class="card-divider">
-                <h2>${engineer.Name}</h2>
-                <i class="fas fa-clipboard-list"></i><h3>${manager.getRole()}</h3>
-            </div>
-            <div class="card-section>
-                <p>${engineer.getId()}</p>
-                <p>${engineer.getEmail()}</p>
-                <p>${engineer.getGithub()}</p>
-            </div>
-        </div>
-    </div>
+                    <div class="cell">
+                        <div class="card">
+                            <div class="card-divider">
+                                <h2>${engineer.Name}</h2>
+                                <i class="fas fa-clipboard-list"></i><h3>${engineer.getRole()}</h3>
+                            </div>
+                            <div class="card-section">
+                                <p>${engineer.getId()}</p>
+                                <p>${engineer.getEmail()}</p>
+                                <p>${engineer.getGithub()}</p>
+                            </div>
+                        </div>
+                    </div>
     `
 }
 
 internCard=(intern)=>{
     return `
-    <div class="cell">
-        <div class="card">
-            <div class="card-divider">
-                <h2>${intern.Name}</h2>
-                <i class="fas fa-clipboard-list"></i><h3>${manager.getRole()}</h3>
-            </div>
-            <div class="card-section>
-                <p>${intern.getId()}</p>
-                <p>${intern.getEmail()}</p>
-                <p>${intern.getSchool()}</p>
-            </div>
-        </div>
-    </div>
+                    <div class="cell">
+                        <div class="card">
+                            <div class="card-divider">
+                                <h2>${intern.Name}</h2>
+                                <i class="fas fa-clipboard-list"></i><h3>${intern.getRole()}</h3>
+                            </div>
+                            <div class="card-section">
+                                <p>${intern.getId()}</p>
+                                <p>${intern.getEmail()}</p>
+                                <p>${intern.getSchool()}</p>
+                            </div>
+                        </div>
+                    </div>
     `
 }
 
