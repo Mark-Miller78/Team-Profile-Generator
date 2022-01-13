@@ -1,5 +1,13 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const pageTemplate = require('./src/page-template');
+const mock = require('./src/mock-data');
+
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+
+let teamArray = [];
 
 const promptUser=(employeeData)=>{
     if(!employeeData){
@@ -134,17 +142,56 @@ const promptUser=(employeeData)=>{
         },
     ])
 
-    .then(employee =>{
-        employeeData.push(employee);
-        if(employee.confirmAddEmployee){
-            return promptUser(employeeData);
+    .then(employeeData =>{
+        let {name, ID, email, employeeType, managerInput, engineerInput, internInput, confirmAddEmployee} = employeeData;
+        let employee;
+
+        if(employeeType === 'Manager'){
+            employee = new Manager(name, ID, email, managerInput);
+        } else if (employeeType === 'Engineer'){
+            employee = new Engineer(name, ID, email, engineerInput);
         } else{
-            return employeeData
+            employee = new Intern(name, ID, email, internInput);
         }
-    });
+        teamArray.push(employee);
+       
+        if(employeeData.confirmAddEmployee){
+            return promptUser(teamArray);
+        } else{
+            console.log(teamArray)
+            return teamArray;
+        }
+    })
+
+    
+        
+    
 }
 
 promptUser()
-    .then(answers=>{
-        console.log(answers);
-    })
+
+
+
+
+// testFunc=(employeeData)=>{
+//     let {name, ID, email, employeeType, managerInput, engineerInput, internInput} = employeeData;
+//     let employee;
+
+//         for(i=0; i<employeeData.length; i++){
+            
+//             if(employeeType === 'Manager'){
+//                 employee = new Manager(name, ID, email, managerInput);
+//             } else if (employeeType === 'Engineer'){
+//                 employee = new Engineer(name, ID, email, engineerInput);
+//             } else{
+//                 employee = new Intern(name, ID, email, internInput);
+//             }
+
+//             teamArray.push(employee);
+//         };
+
+//     console.log(teamArray);
+// }
+
+// testFunc(mock);
+    
