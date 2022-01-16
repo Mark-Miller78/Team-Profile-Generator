@@ -21,7 +21,7 @@ This applications intended use it to create a quick and clean team profile page.
 
 ## Installation
 
-The user needs to clone the repository from GitHub into their own directory. Node needs to be installed onto the machine and npm needs to be intialized through the code line. Jest is used and should be downloaded if testing is going to be performed.
+The user needs to clone the repository from GitHub into their own directory. Node needs to be installed onto the machine and npm needs to be intialized through the code line. Jest is used and should be downloaded if testing is going to be performed. You can view a walkthrough video of how to install the application [here](https://watch.screencastify.com/v/HNorDE2FbBIwf9uhjLSu)!
     
 
 ## Usage
