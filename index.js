@@ -1,8 +1,9 @@
+//module and exports
 const inquirer = require('inquirer');
 const pageTemplate = require('./src/page-template');
 const{writeFile} = require('./utils/generate-HTML');
 
-
+//required classes
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -14,6 +15,7 @@ const promptUser=(employeeData)=>{
         employeeData=[];
     }
 
+    //prompts user
     return inquirer.prompt([
         {
             type: 'input',
@@ -94,7 +96,7 @@ const promptUser=(employeeData)=>{
         {
             type: 'input',
             name: 'engineerInput',
-            message: "Please enter the enginee's GitHub username",
+            message: "Please enter the engineer's GitHub username",
             when:({employeeType})=>{
                 if(employeeType === 'Engineer'){
                     return true;
@@ -142,6 +144,7 @@ const promptUser=(employeeData)=>{
         },
     ])
 
+    //creates new object using classes based on type designation
     .then(employeeData =>{
         let {name, ID, email, employeeType, managerInput, engineerInput, internInput, confirmAddEmployee} = employeeData;
         let employee;
@@ -153,6 +156,7 @@ const promptUser=(employeeData)=>{
         } else{
             employee = new Intern(name, ID, email, internInput);
         }
+        //creates a new array with new objects
         teamArray.push(employee);
        
         if(employeeData.confirmAddEmployee){
@@ -162,10 +166,7 @@ const promptUser=(employeeData)=>{
             return teamArray;
         }
     })
-
-    
-        
-    
+ 
 }
 
 promptUser()

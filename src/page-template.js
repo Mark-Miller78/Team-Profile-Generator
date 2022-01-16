@@ -1,3 +1,4 @@
+//creates manager cards
 managerCard=(manager)=>{
     return `
                 <div class="cell large-10 large-offset-1">
@@ -15,6 +16,7 @@ managerCard=(manager)=>{
     `
 }
 
+//creates engineer cards
 engineerCard=(engineer)=>{
     return `
                 <div class="cell large-3">
@@ -32,6 +34,7 @@ engineerCard=(engineer)=>{
     `
 }
 
+//creates intern cards
 internCard=(intern)=>{
     return `
                 <div class="cell large-3">
@@ -50,17 +53,20 @@ internCard=(intern)=>{
     `
 }
 
+//
 organizeTeam = (employeeArr)=>{
+    //filters into three arrays based off manager, intern, or engineer
     let managerArr = employeeArr.filter(employee=>employee.getRole() === 'Manager')
     let engineerArr = employeeArr.filter(employee=>employee.getRole()==='Engineer');
     let internArr = employeeArr.filter(employee=>employee.getRole()==='Intern');
 
+    //joins arrs so in order of manager, engineer, intern
     const sortedArr = managerArr.concat(engineerArr, internArr)
 
 
     let teamArray = []
 
-
+    //generated html based off role
     for(i=0; i<sortedArr.length; i++){
         const employee = sortedArr[i];
         const role = employee.getRole();
