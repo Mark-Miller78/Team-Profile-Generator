@@ -1,62 +1,68 @@
 managerCard=(manager)=>{
     return `
-                    <div class="cell">
-                        <div class="card">
-                            <div class="card-divider">
-                                <h2>${manager.Name}</h2>
-                                <i class="fas fa-clipboard-list"></i><h3>${manager.getRole()}</h3>
-                            </div>
-                            <div class="card-section">
-                                <p>${manager.getId()}</p>
-                                <p>${manager.getEmail()}</p>
-                                <p>${manager.getOfficeNumber()}</p>
-                            </div>
+                <div class="cell large-10 large-offset-1">
+                    <div class="card">
+                        <div class="card-section text-center cardHeader">
+                            <h2>${manager.Name}<br><i class="fas fa-clipboard-list"></i>${manager.getRole()}</h2>                        
+                        </div>
+                        <div class="card-section cardSection">
+                            <p>${manager.getId()}</p>
+                            <p>${manager.getEmail()}</p>
+                            <p>${manager.getOfficeNumber()}</p>
                         </div>
                     </div>
+                </div>
     `
 }
 
 engineerCard=(engineer)=>{
     return `
-                    <div class="cell">
-                        <div class="card">
-                            <div class="card-divider">
-                                <h2>${engineer.Name}</h2>
-                                <i class="fas fa-clipboard-list"></i><h3>${engineer.getRole()}</h3>
-                            </div>
-                            <div class="card-section">
-                                <p>${engineer.getId()}</p>
-                                <p>${engineer.getEmail()}</p>
-                                <p>${engineer.getGithub()}</p>
-                            </div>
+                <div class="cell large-3">
+                    <div class="card">
+                        <div class="card-section text-center cardHeader">
+                            <h2>${engineer.Name}<br><i class="fas fa-cogs"></i>${engineer.getRole()}</h2>                           
+                        </div>
+                        <div class="card-section cardSection">
+                            <p>${engineer.getId()}</p>
+                            <p>${engineer.getEmail()}</p>
+                            <p>${engineer.getGithub()}</p>
                         </div>
                     </div>
+                </div>
     `
 }
 
 internCard=(intern)=>{
     return `
-                    <div class="cell">
-                        <div class="card">
-                            <div class="card-divider">
-                                <h2>${intern.Name}</h2>
-                                <i class="fas fa-clipboard-list"></i><h3>${intern.getRole()}</h3>
-                            </div>
-                            <div class="card-section">
-                                <p>${intern.getId()}</p>
-                                <p>${intern.getEmail()}</p>
-                                <p>${intern.getSchool()}</p>
-                            </div>
+                <div class="cell large-3">
+                    <div class="card">
+                        <div class="card-section text-center cardHeader">
+                            <h2>${intern.Name}<br><i class="fas fa-graduation-cap"></i>${intern.getRole()}</h2>
+                            
+                        </div>
+                        <div class="card-section cardSection">
+                            <p>${intern.getId()}</p>
+                            <p>${intern.getEmail()}</p>
+                            <p>${intern.getSchool()}</p>
                         </div>
                     </div>
+                </div>
     `
 }
 
 organizeTeam = (employeeArr)=>{
-    teamArray = []
+    let managerArr = employeeArr.filter(employee=>employee.getRole() === 'Manager')
+    let engineerArr = employeeArr.filter(employee=>employee.getRole()==='Engineer');
+    let internArr = employeeArr.filter(employee=>employee.getRole()==='Intern');
 
-    for(i=0; i<employeeArr.length; i++){
-        const employee = employeeArr[i];
+    const sortedArr = managerArr.concat(engineerArr, internArr)
+
+
+    let teamArray = []
+
+
+    for(i=0; i<sortedArr.length; i++){
+        const employee = sortedArr[i];
         const role = employee.getRole();
 
         if(role === "Manager"){
@@ -99,15 +105,14 @@ generateHtml =(cards)=>{
     </head>
     <body>
         <header>
-            <h1> Our Team! </h1>
-        <header>
-        <main>
-            <div class="grid-container">
-                <div class="grid-x grid-margin-x" id="team-cards">
-                    ${cards}
-                </div>
+            <h1 class="text-center"> Our Team! </h1>
+        </header>    
+        <div class="grid-container-fluid" id="gridContainer">
+            <div class="grid-x grid-padding-x" id="team-cards">
+                ${cards}
             </div>
-        </main>
+        </div>
+        
     </body>
     </html>
 `
